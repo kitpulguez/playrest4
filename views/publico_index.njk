@@ -1,0 +1,32 @@
+{% extends "publico_base.njk" %}
+
+{% block titulo %}Juegos | Listado{% endblock %}
+
+{% block contenido %}
+
+    <h1>Listado de juegos</h1>
+    
+    <form action="/buscar" method="get" class="d-flex" enctype="multipart/form-data" role="search"> 
+        <input class="form-control me-2" name="nombre" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Buscar</button>
+    </form>
+
+    {% if juegos %}
+        <div class="row">
+            <ul>
+                {% for juego in juegos %}
+                    {% if loop.index % 2 == 0 %}
+                        <li class="bg-seccondary">
+                    {% else %}
+                        <li class="impar">
+                    {% endif %}                        
+                            <div>{{juego.nombre}}</div>
+                            <a href="/juegos/{{juego.id}}" class="btn btn-success">Ver ficha</a>
+                        </li>
+                {% endfor %}
+            </ul>
+        </div>  
+    {% elif mensaje %}
+        <p>{{ mensaje }}</p>
+    {% endif %}
+{% endblock %}

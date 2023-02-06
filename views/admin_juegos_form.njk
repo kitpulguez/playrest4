@@ -1,0 +1,106 @@
+{% extends "admin_base.njk" %}
+
+{% block titulo %}Juegos | Nuevo{% endblock %}
+
+{% block contenido %}
+
+    {% if juego %}
+        <h1>Edicion de juego</h1>   
+
+        <form action="/admin/juegos/{{juego.id}}" method="post">
+            <input type="hidden" name="_method" value="put"/>
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" class="form-control" name="nombre" value="{{juego.nombre}}"/>
+            </div>
+
+            <div class="form-group">
+                <label for="descripcion">Descripcion:</label>
+                <input type="text" class="form-control" name="descripcion" value="{{juego.descripcion}}"/>
+            </div>
+
+            <div class="form-group">
+                <label for="edad">Edad:</label>
+                <input type="number" class="form-control" name="edad" value="{{juego.edad}}"/>
+            </div>
+
+            <div class="form-group">
+                <label for="jugadores">Jugadores:</label>
+                <input type="number" class="form-control" name="jugadores" value="{{juego.jugadores}}"/>
+            </div>
+
+            <div class="form-group">
+                <label for="tipo">Tipo:</label>
+                <input type="text" class="form-control" name="tipo" value="{{juego.tipo}}"/>
+            </div>
+
+            <div class="form-group">
+                <label for="precio">Precio:</label>
+                <input type="number" class="form-control" name="precio" value="{{juego.precio}}"/>
+            </div>
+
+            <div class="form-group">
+                <label for="imagen">Imagen:</label>
+                <input type="file" class="form-control" name="imagen"/>
+            </div>
+
+            <div class="form-group">
+                <label for="ediciones">Ediciones:</label>
+                <input type="number" class="form-control" name="ediciones" value="{{juego.ediciones}}"/>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-2">
+                Actualizar
+            </button>
+        </form>
+    {% else %}
+
+        <h1>Inserción de nuevo juego</h1>
+
+        <form action="/admin/juegos" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" class="form-control" name="nombre"/>
+            </div>
+
+            <div class="form-group">
+                <label for="descripcion">Descripcion:</label>
+                <input type="text" class="form-control" name="descripcion"/>
+            </div>
+
+            <div class="form-group">
+                <label for="edad">Edad:</label>
+                <input type="number" class="form-control" name="edad"/>
+            </div>
+
+            <div class="form-group">
+                <label for="jugadores">Jugadores:</label>
+                <input type="number" class="form-control" name="jugadores"/>
+            </div>
+
+            <div class="form-group">
+                <label for="tipo">Tipo:</label>
+                <input type="text" class="form-control" name="tipo"/>
+            </div>
+
+            <div class="form-group">
+                <label for="precio">Precio:</label>
+                <input type="number" class="form-control" name="precio"/>
+            </div>
+
+            <div class="form-group">
+                <label for="imagen">Imagen:</label>
+                <input type="file" class="form-control" name="imagen"/>
+            </div>
+
+            <div class="form-group">
+                <label for="ediciones">Ediciones:</label>
+                <input type="text" class="form-control" name="ediciones"/>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-2">
+                Enviar
+            </button>
+        </form>
+    {% endif %}
+{% endblock %}

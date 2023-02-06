@@ -1,0 +1,13 @@
+{% extends "publico_base.njk" %}
+
+{% block titulo %}Error{% endblock %}
+
+{% block contenido %}
+
+    {% if mensaje %}
+        <p>{{mensaje}}</p>
+    {% else %}
+        <p>Error en la aplicacion</p>
+    {% endif %}
+
+{% endblock %}
